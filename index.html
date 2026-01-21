@@ -22,7 +22,7 @@
   </head>
   <body></body>
   <script>
-    
+
     //******   TWEAKABLE PARAMETERS SECTION - EDIT TO CUSTOMIZE YOUR SCATTER PLOT  ******//
 
     //IMPORTING CSV FUNCTION FROM D3 - import other D3 modules as needed
@@ -108,6 +108,7 @@
       const marks = data.map((d) => ({
         x: xScale(xValue(d)),
         y: yScale(yValue(d)),
+        titlePoints: `( ${xValue(d)}, ${yValue(d)} )`, // TOOLTIP text to show on hover
       }));
 
       //DRAW CIRCLES
@@ -119,7 +120,9 @@
         .attr("cy", (d) => d.y)
         .attr("r", radius)
         .attr("fill", circleColor)
-        .attr("opacity", circleOpacity);
+        .attr("opacity", circleOpacity)
+        .append("title") // A tooltip! x,y values on hover (a tooltip = small box that appears when you hover over a shape (here a circle). This is done by adding a <title> element inside each SVG shape
+        .text((d) => d.titlePoints);
 
       //CREATE AXES
       //g element is a container used to group other SVG elements, is needed for grouping the axis elements
