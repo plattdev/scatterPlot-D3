@@ -1,0 +1,1 @@
+This is using vanilla JavaScript, HTML, and CSS. There are no build tools, bundlers, or frameworks present—just a single HTML file (index.html). All code runs directly in the browser without any compilation or preprocessing steps.
